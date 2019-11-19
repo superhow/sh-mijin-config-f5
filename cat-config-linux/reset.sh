@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 local local_path=$PWD
-local script_src=${local_path}/scripts/cat-config-linux
+local script_src=${local_path}/scripts/cat-config
 local node_network=$1
 local node_type=$2
 local catapult_server_src=$3
