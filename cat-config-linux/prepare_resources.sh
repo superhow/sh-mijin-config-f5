@@ -65,7 +65,7 @@ function prepare_base_resources() {
         "generationHash" "$generation_hash"
         "publicKey" "$public_key"
         "totalChainImportance" "17'000'000"
-        "initialCurrencyAtomicUnits" "8'999'999'998'000'000"
+        "initialCurrencyAtomicUnits" "1'999'999'998'000'000"
     )
     
     run_sed "network" network_pairs
@@ -73,7 +73,7 @@ function prepare_base_resources() {
     local -A user_pairs=(
         "bootPrivateKey" "$boot_key"
         "dataDirectory" "$local_path/data"
-    "pluginsDirectory" "$catapult_server_src/_build/bin")
+    "pluginsDirectory" "$catapult_server_src/bin")
     run_sed "user" user_pairs
 }
 
@@ -195,7 +195,7 @@ function prepare_base_resources() {
 		"generationHash" "$generation_hash"
         "publicKey" "$public_key"
         "totalChainImportance" "17'000'000"
-        "initialCurrencyAtomicUnits" "8'999'999'998'000'000"
+        "initialCurrencyAtomicUnits" "1'999'999'998'000'000"
     )
 
     run_sed "network" network_pairs
@@ -203,7 +203,7 @@ function prepare_base_resources() {
 	local -A user_pairs=(
 		"bootPrivateKey" "$boot_key"
 		"dataDirectory" "$local_path/data"
-        "pluginsDirectory" "$catapult_server_src/_build/bin")
+        "pluginsDirectory" "$catapult_server_src/bin")
 	run_sed "user" user_pairs
 }
 
