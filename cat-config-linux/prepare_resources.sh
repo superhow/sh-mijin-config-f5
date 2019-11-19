@@ -65,7 +65,7 @@ function prepare_base_resources() {
         "generationHash" "$generation_hash"
         "publicKey" "$public_key"
         "totalChainImportance" "17'000'000"
-        "initialCurrencyAtomicUnits" "1'999'999'998'000'000"
+        "initialCurrencyAtomicUnits" "1'079'999'998'000'000"
     )
     
     run_sed "network" network_pairs
