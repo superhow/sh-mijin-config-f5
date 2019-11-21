@@ -82,9 +82,9 @@ There are three node types in catapult: `dual`, `peer`, and `api`. An explanatio
 - `<path_to_catapult_bin>` - The FULL path to your catapult-server directory on your machine.
 Path to where built binaries are i.e. `~/catapult/`.
 
-- `<private_key>` - Server node's new private key or Nemesis private key in case of new chain.
+- `<private_key>` - Server node's new private key or Nemesis new private key in case of new chain.
 
-- `<public_key>` - Current network public key or Nemesis public key in case of new chain.
+- `<public_key>` - Existing network public key or Nemesis new public key in case of new chain.
 
 - `<node_option>` - This argument tells the script to configure the node as a new chain node. 
 Will connect your node to an existing chain, or join the Foundation network:
