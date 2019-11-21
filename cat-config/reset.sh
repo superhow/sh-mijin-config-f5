@@ -25,6 +25,11 @@ echo "+ preparing fresh data directory"
 rm -rf ${local_path}/data
 mkdir ${local_path}/data
 
+# reapply seed directory
+echo "+ preparing fresh seed directory"
+rm -rf ${local_path}/seed
+mkdir ${local_path}/seed
+
 # clear state directories
 rm -rf state
 rm -rf statedb
@@ -103,7 +108,6 @@ case "${node_network}" in
         ## Ready to start with start.sh
         setup_foundation
     ;;
-    
     
     ## Prepare a node that is ready to connect to an existing network
     --existing)

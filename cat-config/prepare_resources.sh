@@ -62,9 +62,9 @@ function prepare_base_resources() {
 
 	local -A network_pairs=(
 		"generationHash" "$generation_hash"
-        	"publicKey" "$public_key"
-        	"totalChainImportance" "17'000'000"
-        	"initialCurrencyAtomicUnits" "1'079'999'998'000'000")
+        "publicKey" "$public_key"
+        "totalChainImportance" "17'000'000"
+        "initialCurrencyAtomicUnits" "1'079'999'998'000'000")
 	run_sed "network" network_pairs
 
 	local -A user_pairs=(
@@ -94,7 +94,7 @@ function prepare_api_resources() {
 		"enableAutoSyncCleanup" "false"
 		"friendlyName" "{INSERT_API_NAME}"
 		"roles" "Api")
-	run_sed node node_pairs
+	run_sed "node" node_pairs
 
 	local api_extensions=("filespooling" "partialtransaction")
 	local p2p_extensions=("eventsource" "harvesting" "syncsource")
@@ -112,12 +112,12 @@ function prepare_peer_resources() {
 		"enableSingleThreadPool" "true"
 		"friendlyName" "{INSERT_PEER_NAME}"
 		"roles" "Peer")
-	run_sed node node_pairs
+	run_sed "node" node_pairs
 
 	local -A harvesting_pairs=(
 		"harvesterPrivateKey" "{INSERT_HARVESTER_KEY}"
 		"enableAutoHarvesting" "true")
-	run_sed harvesting harvesting_pairs
+	run_sed "harvesting" harvesting_pairs
 }
 
 function prepare_dual_resources() {
@@ -125,7 +125,7 @@ function prepare_dual_resources() {
 	local -A node_pairs=(
         	"friendlyName" "{INSERT_DUAL_NAME}"
 		"roles" "Api, Peer")
-	run_sed node node_pairs
+	run_sed "node" node_pairs
 
 	local p2p_extensions=("eventsource" "harvesting" "syncsource")
 	set_extensions extensions-server "true" p2p_extensions
