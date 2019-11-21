@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-
-
 local process_name=$1
 local catapult_src=$2
 local local_path=$PWD
