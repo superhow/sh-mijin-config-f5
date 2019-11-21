@@ -1,4 +1,4 @@
-﻿# Catapult Shell Node Configuration Scripts by Super How?
+﻿# mijin Catapult v.F2 Server Configuration Scripts by Super How?
 
 ##### Table of Contents
 
