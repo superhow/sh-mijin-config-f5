@@ -1,5 +1,4 @@
 #!/bin/zsh
-
 # generates the nemesis block properties file and nemesis block
 
 local catapult_server_src=$1
@@ -10,14 +9,12 @@ local nemesis_path="/nemesis/nemesis-block.properties"
 local harvester_keys_path="harvester_addresses.txt"
 local currency_keys_path="currency_addresses.txt"
 
-
 ### From catapult-service-bootstrap
 config_form() {
     local split=$(echo $1 | sed 's/\(.\)/\1 /g')
     local concat=$(printf "%c%c%c%c'" $(echo $split))
     echo "0x$concat[1,-2]"
 }
-
 
 function generate_addresses() {
     local network=$1
@@ -38,7 +35,6 @@ function run_sed() {
 function sed_keys() {
     sed -i -e "/\[$1\]/,/^\[/ s/$2/$3/g" ${local_path}${nemesis_path}
 }
-
 
 function update_nemesis_block_file() {
     cp "${catapult_server_src}/tools/nemgen/resources/mijin-test.properties" ${local_path}${nemesis_path}
@@ -82,11 +78,10 @@ function update_keys() {
     done
 }
 
-
 function nemgen() {
     update_nemesis_block_file
     
-    ######## Nemgen script from catapult-service-bootstrap@https://github.com/tech-bureau/catapult-service-bootstrap
+######## Nemgen script from catapult-service-bootstrap@https://github.com/tech-bureau/catapult-service-bootstrap
     
     if [ ! -d $local_path/data ]; then
         echo "/data directory does not exist"
@@ -99,25 +94,24 @@ function nemgen() {
         mkdir -p ${local_path}/seed/00000
         dd if=/dev/zero of=${local_path}/seed/00000/hashes.dat bs=1 count=64
         cd settings
-        ######## need to run twice and patch the mosaic ids
-        # first time to get cat.harvest and cat.currency
+
+######## need to run twice and patch the mosaic ids
+# first time to get cat.harvest and cat.currency
         ${catapult_server_src}/bin/catapult.tools.nemgen  --resources $local_path --nemesisProperties "${local_path}${nemesis_path}" 2> /tmp/nemgen.log
         
         local harvesting_mosaic_id=$(grep "cat.harvest" /tmp/nemgen.log | grep nonce  | awk -F=  '{split($0, a, / /); print a[9]}' | sort -u)
         local currency_mosaic_id=$(grep "cat.currency" /tmp/nemgen.log | grep nonce  | awk -F=  '{split($0, a, / /); print a[9]}' | sort -u)
         
-        # second time after replacing values for currencyMosaicId and harvestingMosaicId
+# second time after replacing values for currencyMosaicId and harvestingMosaicId
         sed -i "s/^currencyMosaicId .*/currencyMosaicId = "$(config_form ${currency_mosaic_id})"/" ${local_path}/resources/config-network.properties
         sed -i "s/^harvestingMosaicId .*/harvestingMosaicId = "$(config_form ${harvesting_mosaic_id})"/" ${local_path}/resources/config-network.properties
-        ${catapult_server_src}/bin/catapult.tools.nemgen  --resources $local_path --nemesisProperties "${local_path}${nemesis_path}"
+        ${catapult_server_src}/bin/catapult.tools.nemgen --resources $local_path --nemesisProperties "${local_path}${nemesis_path}"
         
         cp -r ${local_path}/seed/* ${local_path}/data/
-
         cd ..
     else
         echo "no need to run nemgen"
     fi
-    
 }
 
 nemgen
