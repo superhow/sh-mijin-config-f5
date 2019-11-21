@@ -37,7 +37,7 @@ rm -rf statedb
 echo "<<< DONE"
 
 # reset mongo
-if [[ "peer" != "${node_network}" ]] then;
+if [[ "peer" != "${node_type}" ]] then;
     echo
     echo "+ resetting mongo"
     pushd .
