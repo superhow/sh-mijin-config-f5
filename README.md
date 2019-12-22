@@ -1,4 +1,4 @@
-﻿# mijin Catapult v.F2 Server Config Scripts by Super How?
+﻿# NEM Catapult v.F3 Server Config Scripts by Super How?
 
 ##### Table of Contents
 
@@ -16,8 +16,7 @@ _NOTE: These scripts are for configuring a Catapult node after it has already be
 
 Most of the scripts were originally created by CrackTheCode016 and by mijin core developer Jaguar0625.
 
-**Super How?** took them and adapted to their needs, fixed some issues, deleted unused stuf, addes a few extra features, as well as some additional documentation.
-Use these scripts as is, without any liabilities to:
+**Super How?** adapted to our needs, fixed some issues, deleted unused stuf, addes a few extra features, as well as some additional documentation. Use these scripts as is, without any liabilities to:
 
 - Reset your Catapult node.
 - Configure your node for `peer`, `api` or `dual` mode with the necessary extensions for each mode.
